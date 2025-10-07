@@ -1,0 +1,18 @@
+﻿@model ViewModel
+
+@{
+    ViewData["Title"] = " Details User";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="card">
+    <div class="card-body">
+        <h4>@Model.Name</h4>
+        <p><strong>CardNumber :</strong> @Model.CardNumber</p>
+        <p><strong>Manegar:</strong> @(Model.CardNumber ?? "Not Found ")</p>
+ 
+    </div>
+</div>
+
+<a asp-controller="Bank" asp-action="Index">Back to Home</a>

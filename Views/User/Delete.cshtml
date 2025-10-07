@@ -1,0 +1,13 @@
+﻿@model ViewModel
+
+<h2>Delete</h2>
+
+<p></p>
+
+<p><strong>Name:</strong> @Model.Name</p>
+<p><strong>Card Number:</strong> @Model.CardNumber</p>
+
+<form method="post" asp-action="DeleteConfirmed" asp-route-id="@Model.Id">
+    <button type="submit" class="btn btn-danger">Yes،Delete</button>
+    <a href="@Url.Action("Index", "User")" class="btn btn-secondary">Cancel</a>
+</form>

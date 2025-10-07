@@ -1,0 +1,41 @@
+﻿@model ViewModel
+
+<h2>User Manager</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Add New User</a>
+</p>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Card Number</th>
+            <th>DepartmentId</th>
+            <th>Procedures</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var u in Model.Users)
+        {
+            <tr>
+                <td>@u.Name</td>
+                <td>@u.CardNumber</td>
+                <td>@u.DepartmentId</td>
+       
+                <td>
+                    <a asp-action="Edit" asp-route-id="@u.Id" class="btn btn-sm btn-info">Edit</a>
+                    <form asp-action="Delete" method="post" style="display:inline;">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="id" value="@u.Id" />
+                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                    </form>
+                </td>
+                <td>
+                    @* عرض اسم القسم بدلاً من معرّفه
+                @Model.DepartmentId.GetValueOrDefault(d => d.Id == u.DepartmentId)?.Name ?? "N/A" *@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
